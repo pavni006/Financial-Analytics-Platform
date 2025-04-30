@@ -89,7 +89,7 @@ const Expense = () => {
     // fetchExpenses();
     // totalExpenses();
     try {
-      await axios.post("http://localhost:5000/expenses", {
+      await axios.post(`${import.meta.env.VITE_API_URL}/expenses`, {
         user_id: 2, //userData.id,
         category: newExpense.category,
         amount: newExpense.amount,
@@ -119,7 +119,7 @@ const Expense = () => {
   const fetchExpenses = async () => {
     try {
       // const res = await axios.post(`http://localhost:5000/expenses/${userData.id}`);
-      const res = await axios.post(`http://localhost:5000/expenses/2`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/expenses/2`, {
         month: month
       });
       setExpenses(res.data);
@@ -140,7 +140,7 @@ const Expense = () => {
       //    const res = await axios.post(`http://localhost:5000/expenses/${userData.id}/group_expense`, {
       //   month: month
       // });
-      const res = await axios.post(`http://localhost:5000/expenses/2/group_expense`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/expenses/2/group_expense`, {
         month: month
       });
       console.log("Month in totalExpenses:", month);
@@ -158,7 +158,7 @@ const Expense = () => {
   const deleteExpense = (expense_id) => async () => {
     try {
       // const res = await axios.delete(`http://localhost:5000/budget/${userData.id}/${budget_id}`);
-      const res = await axios.delete(`http://localhost:5000/expenses/2/${expense_id}`);
+      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/expenses/2/${expense_id}`);
       console.log("Deleted Expense:", res);
       fetchExpenses();
       totalExpenses();

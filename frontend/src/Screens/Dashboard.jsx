@@ -70,7 +70,7 @@ const Dashboard = () => {
     const fetchExpenses = async () => {
       try {
         const res = await axios.post(
-          `http://localhost:5000/expenses/2/group_expense`,
+          `${import.meta.env.VITE_API_URL}/expenses/2/group_expense`,
           { month }
         );
 
